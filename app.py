@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     if request.method == 'POST':
         # Load the model
-        model = joblib.load('catboost_model.pkl')
+        model = joblib.load('cb0_model.pkl')
 
         gender = request.form['gender']
         married = request.form['married']
