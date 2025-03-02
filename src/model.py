@@ -4,10 +4,7 @@ import numpy as np
 class Model:
     def __init__(self):
         self.model = joblib.load('model/rf1_model.pkl')
-        # self.feature_names = ['tenure_months', 'num_referrals', 'total_monthly_fee', 'area_id', 
-        #                       'num_dependents', 'contract_type_encoded', 'age', 'not_credit_card', 
-        #                       'total_charges_quarter', 'total_premium_services']  # Replace with actual feature names
-
+     
     def predict(self, input_features):
         input_features = np.array(input_features)  # Ensure it's a NumPy array
         input_features = input_features.reshape(1, -1)  # Convert to 2D
