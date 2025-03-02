@@ -5,10 +5,11 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     </head>    
     <body>
-
+    <header>
         <h1>Customer Churn Prediction</h1>
-        <p><strong>Objective:</strong> This tool helps TrustTelecom’s customer retention team identify **at-risk customers** likely to switch providers. By analyzing the customer’s profile, engagement, and billing details, we can proactively **reduce churn** by offering personalized incentives.</p>
-        
+        <p>Proactively identify customer likelihood of switching providers. <br>
+            Let's reduce churn by offering targeted incentives where possible.</p>
+    </header>    
         <form method="POST">
             <!-- Progress Bar -->
             <div id="progress-container">
@@ -81,27 +82,7 @@
             <p><strong>Churn Risk Score:</strong> {{ prediction }} (1 = Likely to Churn, 0 = Retained)</p>
         {% endif %}
 
-        <progress id="progressBar" value="0" max="100"></progress>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                let inputs = document.querySelectorAll("input, select");
-        
-                function updateProgress() {
-                    let filled = [...inputs].filter((input) => 
-                        input.value.trim() !== "" && input.value !== "0"
-                    ).length;
-                    let progress = (filled / inputs.length) * 100;
-                    document.getElementById("progressBar").value = progress;
-                }
-        
-                // Listen for changes in input fields & dropdowns
-                inputs.forEach(input => {
-                    input.addEventListener("input", updateProgress);
-                    input.addEventListener("change", updateProgress);
-                });
-            });
-        </script>        
+        <script src="{{ url_for('static', filename='scripts/validation.js') }}"></script>
     
     </body>
     </html>
