@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Customer Churn Prediction | TrustTelecom</title>
+        <title>TrustTelecom Toolkit | Customer Churn Prediction</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     </head>    
     <body>
     <header>
         <h1>Customer Churn Prediction</h1>
         <p>Proactively identify customer likelihood of switching providers. <br>
-            Let's reduce churn by offering targeted incentives where possible.</p>
+            Reduce churn by offering targeted incentives where possible.</p>
     </header>    
         <form method="POST">
             <!-- Progress Bar -->
@@ -39,13 +39,13 @@
                 <legend>Subscription & Engagement</legend>
     
                 <label for="tenure_months">Months as a Customer:</label>
-                <input type="number" id="tenure_months" name="tenure_months" min="0" placeholder="E.g. 24 (2 years)">
+                <input type="number" id="tenure_months" name="tenure_months" min="0" placeholder="E.g. 24">
     
                 <label for="contract_type_encoded">Contract Type:</label>
                 <select id="contract_type_encoded" name="contract_type_encoded">
-                    <option value="1">Month-to-Month</option>
-                    <option value="2">One-Year</option>
-                    <option value="3">Two-Year</option>
+                    <option value="2">Month-to-Month</option>
+                    <option value="1">One-Year</option>
+                    <option value="0">Two-Year</option>
                 </select>
     
                 <label for="not_credit_card">Payment Method:</label>
@@ -79,7 +79,7 @@
     
         {% if prediction is defined %}
             <h2>Prediction Result:</h2>
-            <p><strong>Churn Risk Score:</strong> {{ prediction }} (1 = Likely to Churn, 0 = Retained)</p>
+            <p>{{ prediction }}</p>
         {% endif %}
 
         <script src="{{ url_for('static', filename='scripts/validation.js') }}"></script>

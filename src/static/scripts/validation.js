@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let inputs = document.querySelectorAll("input, select");
     let progressBar = document.getElementById("progressBar");
-    let progressContainer = document.getElementById("progress-container");
 
     function updateProgress() {
         let filled = [...inputs].filter((input) => 
@@ -30,6 +29,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 hideTooltip(this);
             }
         });
+    });
+
+    // Prevent Area ID from Starting with "-"
+    let areaInput = document.getElementById("area_id");
+    areaInput.addEventListener("input", function () {
+        if (this.value.startsWith("-")) {
+            this.value = ""; // Clear if user tries to type "-"
+            this.classList.add("error");
+            showTooltip(this, "Area ID cannot start with a negative sign.");
+        } else {
+            this.value = this.value.replace(/[^0-9]/g, ""); // Allow only numbers
+            this.classList.remove("error");
+            hideTooltip(this);
+        }
     });
 
     // Function to show tooltip
