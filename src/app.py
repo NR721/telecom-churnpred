@@ -7,7 +7,7 @@ app = Flask(__name__)
 # 1: Response with Text
 @app.route('/')  # default method=['GET']
 def home_page():
-    return 'Welcome to the home page!'
+    return render_template('home.html')  # Renders the styled home page
 
 # 2: Respond with HTML template
 @app.route('/cust_churn_pred', methods=['GET', 'POST'])

@@ -101,8 +101,8 @@ select {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Submit Button */
-input[type="submit"] {
+/* Consistent Button Styling */
+input[type="submit"], button {
     background-color: #ff6f61; /* Coral */
     color: white;
     border: none;
@@ -115,8 +115,9 @@ input[type="submit"] {
     transition: background 0.3s ease-in-out;
 }
 
-input[type="submit"]:hover {
-    background-color: #ff3b2f; /* Slightly darker coral */
+/* Hover Effect */
+input[type="submit"]:hover, button:hover {
+    background-color: #ff3b2f; /* Darker coral */
 }
 
 /* Small Text Descriptions */
