@@ -1,49 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Loan Prediction</title>
-</head>
-<body>
-    <h1>Loan Prediction</h1>
-    <form method="POST">
-        <label for="gender">Gender:</label><br>
-        <input type="text" id="gender" name="gender"><br><br>
+    <head>
+        <title>Customer Churn Prediction | TrustTelecom</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>    
+    <body>
 
-        <label for="married">Married:</label><br>
-        <input type="text" id="married" name="married"><br><br>
-
-        <label for="dependents">Dependents:</label><br>
-        <input type="text" id="dependents" name="dependents"><br><br>
+        <h1>Customer Churn Prediction</h1>
+        <p><strong>Objective:</strong> This tool helps TrustTelecom’s customer retention team identify **at-risk customers** likely to switch providers. By analyzing the customer’s profile, engagement, and billing details, we can proactively **reduce churn** by offering personalized incentives.</p>
         
-        <label for="education">Education:</label><br>
-        <input type="text" id="education" name="education"><br><br>
+        <form method="POST">
+            <!-- Progress Bar -->
+            <div id="progress-container">
+                <label for="progressBar"><strong>Form Completion:</strong></label>
+                <progress id="progressBar" value="0" max="100" style="width: 80%; height: 12px;"></progress>
+            </div>
 
-        <label for="self_employed">Self Employed:</label><br>
-        <input type="text" id="self_employed" name="self_employed"><br><br>
+            <!-- Section 1: Customer Profile -->
+            <fieldset>
+                <legend>Customer Profile</legend>
+    
+                <label for="age">Customer Age:</label>
+                <input type="number" id="age" name="age" min="0" placeholder="E.g. 35">
+    
+                <label for="area_id">Residential Area (ID):</label>
+                <input type="text" id="area_id" name="area_id" placeholder="E.g. 607">
+    
+                <label for="num_dependents">Number of Dependents:</label>
+                <input type="number" id="num_dependents" name="num_dependents" min="0" placeholder="E.g. 2">
+    
+                <label for="num_referrals">Referrals Made by Customer:</label>
+                <input type="number" id="num_referrals" name="num_referrals" min="0" placeholder="E.g. 3">
+            </fieldset>
+    
+            <!-- Section 2: Subscription & Engagement Details -->
+            <fieldset>
+                <legend>Subscription & Engagement</legend>
+    
+                <label for="tenure_months">Months as a Customer:</label>
+                <input type="number" id="tenure_months" name="tenure_months" min="0" placeholder="E.g. 24 (2 years)">
+    
+                <label for="contract_type_encoded">Contract Type:</label>
+                <select id="contract_type_encoded" name="contract_type_encoded">
+                    <option value="1">Month-to-Month</option>
+                    <option value="2">One-Year</option>
+                    <option value="3">Two-Year</option>
+                </select>
+    
+                <label for="not_credit_card">Payment Method:</label>
+                <select id="not_credit_card" name="not_credit_card">
+                    <option value="0">Credit Card</option>
+                    <option value="1">Other (Bank Transfer, Cash, etc.)</option>
+                </select>
+    
+                <label for="total_premium_services">
+                    Premium Services Subscribed:
+                    <span title="Includes multiple lines, premium tech support, online security, online backup, and device protection services.">❔</span>
+                </label>
+                <input type="number" id="total_premium_services" name="total_premium_services" min="0" placeholder="E.g. 1">
+                <small>Premium services include multiple lines, premium tech support, online security, online backup, and device protection.</small>
+            </fieldset>
+    
+            <!-- Section 3: Financial & Billing -->
+            <fieldset>
+                <legend>Billing & Financial Data</legend>
+    
+                <label for="total_monthly_fee">Total Monthly Fee ($):</label>
+                <input type="number" step="0.01" id="total_monthly_fee" name="total_monthly_fee" min="0" placeholder="E.g. 83.90">
+    
+                <label for="total_charges_quarter">Total Charges in Last Quarter ($):</label>
+                <input type="number" step="0.01" id="total_charges_quarter" name="total_charges_quarter" min="0" placeholder="E.g. 267.40">
+            </fieldset>
+    
+            <!-- Submit -->
+            <input type="submit" value="Predict Churn Risk">
+        </form>
+    
+        {% if prediction is defined %}
+            <h2>Prediction Result:</h2>
+            <p><strong>Churn Risk Score:</strong> {{ prediction }} (1 = Likely to Churn, 0 = Retained)</p>
+        {% endif %}
 
-        <label for="applicant_income">Applicant Income:</label><br>
-        <input type="text" id="applicant_income" name="applicant_income"><br><br>
+        <progress id="progressBar" value="0" max="100"></progress>
 
-        <label for="applicant_income">Co-Applicant Income:</label><br>
-        <input type="text" id="coapplicant_income" name="coapplicant_income"><br><br>
-
-        <label for="loan_amount">Loan Amount:</label><br>
-        <input type="text" id="loan_amount" name="loan_amount"><br><br>
-
-        <label for="loan_amount_term">Loan Amount Term:</label><br>
-        <input type="text" id="loan_amount_term" name="loan_amount_term"><br><br>
-
-        <label for="credit_history">Credit History:</label><br>
-        <input type="text" id="credit_history" name="credit_history"><br><br>
-
-        <label for="property_area">Property Area:</label><br>
-        <input type="text" id="property_area" name="property_area"><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    {% if prediction is defined %}
-        <h2>Predicted Loan Status: {{ prediction }}</h2>
-    {% endif %}
-</body>
-</html>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let inputs = document.querySelectorAll("input, select");
+        
+                function updateProgress() {
+                    let filled = [...inputs].filter((input) => 
+                        input.value.trim() !== "" && input.value !== "0"
+                    ).length;
+                    let progress = (filled / inputs.length) * 100;
+                    document.getElementById("progressBar").value = progress;
+                }
+        
+                // Listen for changes in input fields & dropdowns
+                inputs.forEach(input => {
+                    input.addEventListener("input", updateProgress);
+                    input.addEventListener("change", updateProgress);
+                });
+            });
+        </script>        
+    
+    </body>
+    </html>
