@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, send_file
 import joblib
 import numpy as np
 
@@ -96,6 +96,13 @@ def get_json():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+# 4: Response with File (Bonus)
+@app.route('/file')
+def get_file():
+    file_path = '../model/rf1_model.pkl'
+    return send_file(file_path, download_name='rf1_model.pkl',
+                     as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
