@@ -22,16 +22,16 @@
                 <legend>Customer Profile</legend>
     
                 <label for="age">Customer Age:</label>
-                <input type="number" id="age" name="age" min="0" placeholder="E.g. 35">
+                <input type="number" id="age" name="age" min="10" max="120" placeholder="E.g. 35" required>
     
                 <label for="area_id">Residential Area (ID):</label>
-                <input type="text" id="area_id" name="area_id" placeholder="E.g. 607">
+                <input type="text" id="area_id" name="area_id" pattern="^[A-Za-z0-9]+$" placeholder="E.g. 607" required>
     
                 <label for="num_dependents">Number of Dependents:</label>
-                <input type="number" id="num_dependents" name="num_dependents" min="0" placeholder="E.g. 2">
+                <input type="number" id="num_dependents" name="num_dependents" min="0" max = "10" placeholder="E.g. 2" required>
     
                 <label for="num_referrals">Referrals Made by Customer:</label>
-                <input type="number" id="num_referrals" name="num_referrals" min="0" placeholder="E.g. 3">
+                <input type="number" id="num_referrals" name="num_referrals" min="0" placeholder="E.g. 3" required>
             </fieldset>
     
             <!-- Section 2: Subscription & Engagement Details -->
@@ -39,17 +39,19 @@
                 <legend>Subscription & Engagement</legend>
     
                 <label for="tenure_months">Months as a Customer:</label>
-                <input type="number" id="tenure_months" name="tenure_months" min="0" placeholder="E.g. 24">
+                <input type="number" id="tenure_months" name="tenure_months" min="0" placeholder="E.g. 24" required>
     
                 <label for="contract_type_encoded">Contract Type:</label>
-                <select id="contract_type_encoded" name="contract_type_encoded">
+                <select id="contract_type_encoded" name="contract_type_encoded" required>
+                    <option value="">-- Select Contract Type --</option>
                     <option value="2">Month-to-Month</option>
                     <option value="1">One-Year</option>
                     <option value="0">Two-Year</option>
                 </select>
     
                 <label for="not_credit_card">Payment Method:</label>
-                <select id="not_credit_card" name="not_credit_card">
+                <select id="not_credit_card" name="not_credit_card" required>
+                    <option value="">-- Select Payment Method --</option>
                     <option value="0">Credit Card</option>
                     <option value="1">Other (Bank Transfer, Cash, etc.)</option>
                 </select>
@@ -58,7 +60,7 @@
                     Premium Services Subscribed:
                     <span title="Includes multiple lines, premium tech support, online security, online backup, and device protection services.">❔</span>
                 </label>
-                <input type="number" id="total_premium_services" name="total_premium_services" min="0" placeholder="E.g. 1">
+                <input type="number" id="total_premium_services" name="total_premium_services" min="0" placeholder="E.g. 1" required>
                 <small>Premium services include multiple lines, premium tech support, online security, online backup, and device protection.</small>
             </fieldset>
     
@@ -67,10 +69,10 @@
                 <legend>Billing & Financial Data</legend>
     
                 <label for="total_monthly_fee">Total Monthly Fee ($):</label>
-                <input type="number" step="0.01" id="total_monthly_fee" name="total_monthly_fee" min="0" placeholder="E.g. 83.90">
+                <input type="number" step="0.01" id="total_monthly_fee" name="total_monthly_fee" min="0" placeholder="E.g. 83.90" required>
     
                 <label for="total_charges_quarter">Total Charges in Last Quarter ($):</label>
-                <input type="number" step="0.01" id="total_charges_quarter" name="total_charges_quarter" min="0" placeholder="E.g. 267.40">
+                <input type="number" step="0.01" id="total_charges_quarter" name="total_charges_quarter" min="0" placeholder="E.g. 267.40" required>
             </fieldset>
     
             <!-- Submit -->

@@ -38,10 +38,10 @@ def get_html():
     return render_template('cust_churn_pred.html')
 
 # 3: Response with JSON
-@app.route('/json', methods=['POST'])
+@app.route('/api_json', methods=['POST'])
 def get_json():
     try:
-        data = request.get_json()
+        request_data = request.get_json()
         # Validate JSON input
         required_fields = [
             "tenure_months", "num_referrals", "total_monthly_fee", "area_id",
@@ -49,7 +49,7 @@ def get_json():
             "not_credit_card", "total_charges_quarter", "total_premium_services"
         ]
         for field in required_fields:
-            if field not in data:
+            if field not in request_data:
                 return jsonify({"error": f"Missing field: {field}"}), 400
 
         # Load the model
