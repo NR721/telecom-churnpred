@@ -56,7 +56,7 @@ def get_json():
         model = joblib.load('model/rf1_model.pkl')
 
        # Format input data
-        parameters = format_model_inputs()
+        parameters = format_model_inputs(request_data)
 
         # Make a binary prediction (outputs 1 or 0)
         prediction = model.predict(parameters)[0]
