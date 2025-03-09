@@ -103,7 +103,7 @@ select {
 
 /* Consistent Button Styling */
 input[type="submit"], button {
-    background-color: #ff6f61; /* Coral */
+    background-color: #2f9aad; /* Coral */
     color: white;
     border: none;
     cursor: pointer;
@@ -117,7 +117,7 @@ input[type="submit"], button {
 
 /* Hover Effect */
 input[type="submit"]:hover, button:hover {
-    background-color: #ff3b2f; /* Darker coral */
+    background-color: #1b6876; /* Darker coral */
 }
 
 /* Small Text Descriptions */

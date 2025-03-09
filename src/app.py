@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify, send_file
 import joblib
-from input_processing import format_model_inputs
+from input_processing import format_model_inputs, validate
 
 app = Flask(__name__)
 
@@ -42,21 +42,21 @@ def get_html():
 def get_json():
     try:
         request_data = request.get_json()
-        # Validate JSON input
-        required_fields = [
-            "tenure_months", "num_referrals", "total_monthly_fee", "area_id",
-            "num_dependents", "contract_type_encoded", "age",
-            "not_credit_card", "total_charges_quarter", "total_premium_services"
-        ]
-        for field in required_fields:
-            if field not in request_data:
-                return jsonify({"error": f"Missing field: {field}"}), 400
 
+        if not request_data:
+            return jsonify({"error": "Invalid JSON input"}), 400
+
+        # Run validation checks
+        validation_errors = validate(request_data)
+
+        if validation_errors:
+            return jsonify({"error": validation_errors}), 400
+        
         # Load the model
         model = joblib.load('model/rf1_model.pkl')
 
        # Format input data
-        parameters = format_model_inputs(data)
+        parameters = format_model_inputs()
 
         # Make a binary prediction (outputs 1 or 0)
         prediction = model.predict(parameters)[0]

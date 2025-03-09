@@ -7,20 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>    
 <body>
-
     <header>
         <h1>Welcome to TrustTelecom</h1>
         <p>Use our predictive tool to analyze customer churn and improve retention strategies.</p>
     </header>
-
     <div class="container">
-        <h2>Get Started</h2>
-        <p>Click below to start predicting customer churn.</p>
-        
-        <form action="{{ url_for('get_html') }}" method="get">
-            <input type="submit" value="Go to Churn Prediction">
-        </form>
+    <form action="{{ url_for('get_html') }}" method="get">
+        <input type="submit" value="Go to Churn Prediction">
+    </form>
     </div>
-
 </body>
 </html>
