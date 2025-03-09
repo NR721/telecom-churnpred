@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify, send_file
 import joblib
-import numpy as np
+from input_processing import format_model_inputs
 
 app = Flask(__name__)
 
@@ -16,33 +16,24 @@ def get_html():
         # Load the model
         model = joblib.load('model/rf1_model.pkl')
         
-        tenure_months = float(request.form['tenure_months'])
-        num_referrals = int(request.form['num_referrals'])
-        total_monthly_fee = float(request.form['total_monthly_fee'])
-        area_id = str(request.form['area_id']).strip()  # Keep it as a string
-        num_dependents = int(request.form['num_dependents'])
-        contract_type_encoded = int(request.form['contract_type_encoded'])
-        age = int(request.form['age'])
-        not_credit_card = int(request.form['not_credit_card'])
-        total_charges_quarter = float(request.form['total_charges_quarter'])
-        total_premium_services = int(request.form['total_premium_services'])
+       # Extract inputs from form
+        input_data = request.form.to_dict()
 
-        # Prepare input for the model (ensure it's a 2D array)
-        parameters = np.array([[
-            tenure_months, num_referrals, total_monthly_fee, area_id, 
-            num_dependents, contract_type_encoded, age, not_credit_card, 
-            total_charges_quarter, total_premium_services
-        ]], dtype=object)  # Use dtype=object to allow strings
+        try:
+            # Format input data
+            parameters = format_model_inputs(input_data)
 
-        # Make a binary prediction (outputs 1 or 0)
-        prediction = model.predict(parameters)
+            # Make a binary prediction (outputs 1 or 0)
+            prediction = model.predict(parameters)
 
-        # Convert prediction result to readable text
-        prediction_text = "Likely to Churn" if prediction == 1 else "Retained"
-    
-        # Return the result along with the form
-        return render_template('cust_churn_pred.html', prediction=prediction_text)
+            # Convert prediction result to readable text
+            prediction_text = "Likely to Churn" if prediction == 1 else "Retained"
 
+            return render_template('cust_churn_pred.html', prediction=prediction_text)
+        
+        except Exception as e:
+            return render_template('cust_churn_pred.html', prediction=f"Error: {e}")
+        
     # If it's a GET request, just render the form
     return render_template('cust_churn_pred.html')
 
@@ -64,24 +55,8 @@ def get_json():
         # Load the model
         model = joblib.load('model/rf1_model.pkl')
 
-        # Convert input values
-        tenure_months = float(data['tenure_months'])
-        num_referrals = int(data['num_referrals'])
-        total_monthly_fee = float(data['total_monthly_fee'])
-        area_id = str(data['area_id']).strip()  # Keep it as a string
-        num_dependents = int(data['num_dependents'])
-        contract_type_encoded = int(data['contract_type_encoded'])
-        age = int(data['age'])
-        not_credit_card = int(data['not_credit_card'])
-        total_charges_quarter = float(data['total_charges_quarter'])
-        total_premium_services = int(data['total_premium_services'])
-
-        # Prepare input for the model (ensure it's a 2D array)
-        parameters = np.array([[
-            tenure_months, num_referrals, total_monthly_fee, area_id, 
-            num_dependents, contract_type_encoded, age, not_credit_card, 
-            total_charges_quarter, total_premium_services
-        ]], dtype=object)  # Use dtype=object to allow strings
+       # Format input data
+        parameters = format_model_inputs(data)
 
         # Make a binary prediction (outputs 1 or 0)
         prediction = model.predict(parameters)[0]
@@ -94,8 +69,11 @@ def get_json():
             "prediction": prediction_text
         })
 
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
 
 # 4: Response with File (Bonus)
 @app.route('/file')
