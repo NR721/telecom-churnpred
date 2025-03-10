@@ -35,7 +35,7 @@
                 <!-- Tab Navigation -->
                 <div class="tab">
                     <button class="tablinks active" onclick="openTab(event, 'majority-persona')">Persona</button>
-                    <button class="tablinks" onclick="openTab(event, 'customer-behavior')">Behavior</button>
+                    <button class="tablinks" onclick="openTab(event, 'customer-behaviour')">Behaviour</button>
                     <button class="tablinks" onclick="openTab(event, 'loyal-attributes')">Loyal Attributes</button>
                     <button class="tablinks" onclick="openTab(event, 'low-value-attributes')">Low-value Attributes</button>
                 </div>
@@ -80,12 +80,12 @@
 
                 <p>The dataset further revealed that <b>San Diego customers</b> had the highest churn rate,
                     primarily due to competitors' superior device offerings and promotions.
-                    <i>Please refer to the annotated red flags highlighting the Top 10 Highest Churn Areas on the map below.</i></p>
+                    <i>Please refer to annotated red flags highlighting the Top 10 Highest Churn Areas in map below.</i></p>
                     <iframe src="{{ url_for('static', filename='geo_churn_top10_areaid.html') }}" 
                             width="100%" height="400px" style="border: none;"></iframe>
 
             <h4>Feature Engineering</h4>
-            <p>To enhance model accuracy, we engineered features and applied encoding techniques:</p>
+            <p>To enhance model accuracy, we engineered features and applied encoding techniques.</p>
 
                 <!-- Tab Navigation -->
                 <div class="tab">
@@ -157,10 +157,9 @@
                                 <li><b>Random Forest</b></li>
                             </ul>
                         </li>
-                        <li>
-                            <b>Random Forest</b> achieved the highest AUC score and was chosen as the best-performing model. To ensure model consistency,
-                            we applied <b>K-Fold Cross-Validation (K=10)</b> across all three models. 
-                            <b>Random Forest</b> consistently outperformed the alternatives, confirming its suitability for deployment.
+                        <li><b>Random Forest</b> achieved the highest AUC score and was chosen as the best-performing model.</li>
+                        <li>To ensure model consistency, we applied <b>K-Fold Cross-Validation (K=10)</b> across all three models.
+                            Random Forest</b> consistently outperformed the alternatives, confirming its suitability for deployment.</li>
                         </li>
                     </ul>
                 </div>
