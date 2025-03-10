@@ -40,6 +40,27 @@ Rui Xin Oh
 
 ## 💻 Running the Project Locally
 
+### **VS Code File Hierarchy**
+📂 JAN25-P01
+│── 📂 data
+│   ├── cust-churn-data.ipynb  # Jupyter Notebook for EDA & Feature Engineering
+│── 📂 model
+│   ├── rf1_model.pkl  # Final Model Export
+│── 📂 src
+│   ├── app.py  # Flask API for Churn Prediction
+│   ├── input_processing.py  # Preprocessing helper functions
+│   ├── model.py  # Load Final Model
+│   ├── test_api.py  #  Test API works
+│── 📂 static
+│   ├── css/styles.css  # Frontend styling
+│── 📂 templates
+│   ├── home.html  # Homepage UI
+│   ├── cust_churn_pred.html  # Customer input & results page
+│── .gitignore
+│── requirements.txt  # Dependencies for the project
+│── README.md
+│── Dockerfile  # Containerization setup
+
 ### **Clone the Repository**
 ```bash
 git clone https://github.com/Heicoders-AI300/jan25-p01.git
