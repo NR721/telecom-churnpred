@@ -46,7 +46,7 @@ git clone https://github.com/Heicoders-AI300/jan25-p01.git
 cd trusttelecom-churn-prediction
 ```
 
-## Prerequisites
+### **Prerequisites**
 Before installing Python dependencies, install system dependencies:
 
 ```bash
@@ -71,7 +71,7 @@ pip install -r requirements.txt
 
 ### **Run Flask Application**
 ```bash
-python app.py
+python src/app.py
 ```
 Your app should now be running at **http://localhost:5000/**.
 
@@ -91,10 +91,10 @@ If using Docker for containerised deployment, follow these steps:
 
 ### **Build the Docker Image**
 ```bash
-docker build -t trusttelecom-churn .
+docker build -t rxoh/trusttelecom-churn-app:1.1  .
 ```
 
 ### **Run the Container**
 ```bash
-docker run -d -p 80:80 trusttelecom-churn
+docker run -d -p 80:80 rxoh/trusttelecom-churn-app:1.1  .
 ```

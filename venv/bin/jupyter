@@ -1,4 +1,4 @@
-#!/Users/rxoh/AI300/Capstone/jan25-p01/ai300venv/bin/python3.9
+#!/Users/rxoh/AI300/Capstone/jan25-p01/venv/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys
