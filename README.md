@@ -12,18 +12,18 @@ This repository contains the **TrustTelecom Churn Prediction Tool**, a Flask-bas
 
 ---
 
-## 👨‍💻 Author
+## Author
 Rui Xin Oh
 
 ---
 
-## 🌍 Live Web Application
+## Live Web Application
 **URL:** [Deployed Flask App](https://your-deployed-url.com)  
 *(Click the link above to access the live web application)*
 
 ---
 
-## 🏆 Final Model Details
+## Final Model Details
 
 - **Chosen Model:** `RandomForestClassifier`
 - **Hyperparameters:**
@@ -40,7 +40,58 @@ Rui Xin Oh
 
 ## 💻 Running the Project Locally
 
-### **1️⃣ Clone the Repository**
+### **Clone the Repository**
 ```bash
 git clone https://github.com/your-username/trusttelecom-churn-prediction.git
 cd trusttelecom-churn-prediction
+```
+
+### **Set Up a Virtual Environment**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+```
+
+### **Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+### **Run Flask Application**
+```bash
+python app.py
+```
+Your app should now be running at **http://127.0.0.1:5000/**.
+
+---
+
+## 🛠️ API Endpoints
+| Method | Endpoint         | Description |
+|--------|-----------------|-------------|
+| `POST` | `/api_json`      | Get churn prediction via API |
+| `GET`  | `/cust_churn_pred` | Render the customer prediction form |
+| `GET`  | `/file`          | Download model file |
+
+*(Modify this table based on your API structure.)*
+
+---
+
+## 🐳 Docker Deployment
+If using Docker for containerised deployment, follow these steps:
+
+### **Build the Docker Image**
+```bash
+docker build -t trusttelecom-churn .
+```
+
+### **Run the Container**
+```bash
+docker run -d -p 80:80 trusttelecom-churn
+```
+Visit `http://localhost` to access the app.
+---
+
+## Contributing
+Feel free to submit a **Pull Request** or open an **Issue** if you find bugs or want to suggest improvements.
+
+---
