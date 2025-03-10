@@ -7,14 +7,13 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>    
 <body>
-
     <!-- Hero Section -->
     <header class="hero">
         <h1>TrustTelecom Churn Prediction</h1>
         <p>Every month, thousands of customers leave service providers;
             acquiring new customers is <b>5 times more expensive</b> than retaining existing ones. 
             As such, our data engineering team created a churn prediction tool to empower
-            our Customer Care team to identify high-risk customers, provide targeted offers and discounts, and improve overall customer satisfaction.</p>
+            the Customer Care team to identify high-risk customers, provide targeted offers and discounts, and improve overall customer satisfaction.</p>
     </header>
 
     <!-- Sticky CTA Button -->
@@ -22,164 +21,166 @@
 
     <!-- Methodology Content -->
     <div class="container">
-        <!-- Left Section: About the Tool -->
         <section class="info-section">
             <h2>Methodology</h2>
-            <p><b>Data Collection & Cleaning</b></p>
-            <p>The dataset used in this model consists of 7,043 customer records from California,
-                containing 
-                <a href="https://community.ibm.com/community/user/businessanalytics/blogs/steven-macko/2019/07/11/telco-customer-churn-1113" target="_blank">
-                    customer demographics, account details, billing history and service subscriptions</a>.
-                Before training the model, the dataset was <b>cleaned and preprocessed</b>, which included handling missing values, encoding categorical variables, and ensuring appropriate data types.
-            </p>
-
-            <p><b>Exploratory Data Analysis</b></p>
-            <p>The dataset revealed important insights into <b>majority</b> customer behavior and churn patterns:
+            <h4>Data Collection & Cleaning</h4>
+                <p>The dataset used in this model consists of 7,043 customer records from California in Q3, containing 
+                    <a href="https://community.ibm.com/community/user/businessanalytics/blogs/steven-macko/2019/07/11/telco-customer-churn-1113" target="_blank">
+                        customer demographics, account details, billing history and service subscriptions</a>.
+                    Before training the model, the dataset was <b>cleaned and pre-processed</b>, which included handling missing values, encoding categorical variables, and ensuring appropriate data types.
+                </p>
+            <h4>Exploratory Data Analysis</h4>
+            <p>The dataset revealed important insights into <b>majority</b> customer behaviour and churn patterns.
             
-            <!-- Tab Navigation -->
-            <div class="tab">
-                <button class="tablinks active" onclick="openTab(event, 'majority-persona')">Persona</button>
-                <button class="tablinks" onclick="openTab(event, 'customer-behavior')">Behavior</button>
-                <button class="tablinks" onclick="openTab(event, 'loyal-customers')">Loyal Attributes</button>
-                <button class="tablinks" onclick="openTab(event, 'low-value-columns')">Low-value Attributes</button>
-            </div>
+                <!-- Tab Navigation -->
+                <div class="tab">
+                    <button class="tablinks active" onclick="openTab(event, 'majority-persona')">Persona</button>
+                    <button class="tablinks" onclick="openTab(event, 'customer-behavior')">Behavior</button>
+                    <button class="tablinks" onclick="openTab(event, 'loyal-attributes')">Loyal Attributes</button>
+                    <button class="tablinks" onclick="openTab(event, 'low-value-attributes')">Low-value Attributes</button>
+                </div>
             
-            <!-- Tab Content -->
-            <div id="majority-persona" class="tabcontent" style="display: block;">
-                <ul>
-                    <li>Not a senior citizen</li>
-                    <li>Has no dependents</li>
-                </ul>
-            </div>
+                <!-- Tab Content -->
+                <div id="majority-persona" class="tabcontent" style="display: block;">
+                    <ul>
+                        <li>Not a senior citizen</li>
+                        <li>Has no dependents</li>
+                    </ul>
+                </div>
 
-            <div id="customer-behavior" class="tabcontent">
-                <ul>
-                    <li>Uses internet service, unlimited data, phone service, and paperless billing</li>
-                    <li>Streams TV, movies, and music</li>
-                    <li>Pays around <b>$20 per month</b></li>
-                    <li>Has not made a referral</li>
-                    <li>Has no major complaints or refund requests</li>
-                    <li>Does not subscribe to premium tech support, online security, or device protection</li>
-                    <li>Does not use long-distance calling or heavy mobile data downloads</li>
-                    <li>Tenure months are distributed across extremes (very short or very long tenure)</li>
-                </ul>
-            </div>
+                <div id="customer-behavior" class="tabcontent">
+                    <ul>
+                        <li>Uses internet service, unlimited data, phone service, and paperless billing</li>
+                        <li>Streams TV, movies, and music</li>
+                        <li>Pays around <b>$20 per month</b></li>
+                        <li>Has not made a referral</li>
+                        <li>Has no major complaints or refund requests</li>
+                        <li>Does not subscribe to premium tech support, online security, or device protection</li>
+                        <li>Does not use long-distance calling or heavy mobile data downloads</li>
+                        <li>Tenure months are distributed across extremes (very short or very long tenure)</li>
+                    </ul>
+                </div>
 
-            <div id="loyal-customers" class="tabcontent">
-                <ul>
-                    <li>Has <b>> 5 months</b> of tenure</li>
-                    <li>Made <b>> 2 </b>referrals</li>
-                    <li>Spent <b>> $500 </b>on long-distance fees</li>
-                    <li>Spent <b>> $500 </b>in total quarterly charges</li>
-                    <li>Has at least <b>1 </b>dependent</li>
-                </ul>
-            </div>
+                <div id="loyal-attributes" class="tabcontent">
+                    <ul>
+                        <li>Has <b>> 5 months</b> of tenure</li>
+                        <li>Made <b>> 2 </b>referrals</li>
+                        <li>Spent <b>> $500 </b>on long-distance fees</li>
+                        <li>Spent <b>> $500 </b>in total quarterly charges</li>
+                        <li>Has at least <b>1 </b>dependent</li>
+                    </ul>
+                </div>
 
-            <div id="low-value-columns" class="tabcontent">
-                <ul>
-                    <li><b>Customer ID</b> – No significant difference between early vs late joiners</li>
-                    <li><b>Gender</b> – Gender distribution was proportionate and did not impact churn</li>
-                </ul>
-            </div>
+                <div id="low-value-attributes" class="tabcontent">
+                    <ul>
+                        <li><b>Customer ID</b> – No significant difference between early vs late joiners</li>
+                        <li><b>Gender</b> – Gender distribution was proportionate and did not impact churn</li>
+                    </ul>
+                </div>
 
-            <br>The dataset further revealed that <b>San Diego customers</b> had the highest churn rate, primarily due to competitors' superior device offerings and promotions.
-            <br><i>Refer to the annotated red flags highlighting the Top 10 Highest Churn Areas on the map below.</i></p>
-                <iframe src="{{ url_for('static', filename='geo_churn_top10_areaid.html') }}" 
-                        width="100%" height="400px" style="border: none;"></iframe>
+                <p>The dataset further revealed that <b>San Diego customers</b> had the highest churn rate,
+                    primarily due to competitors' superior device offerings and promotions.
+                    <i>Please refer to the annotated red flags highlighting the Top 10 Highest Churn Areas on the map below.</i></p>
+                    <iframe src="{{ url_for('static', filename='geo_churn_top10_areaid.html') }}" 
+                            width="100%" height="400px" style="border: none;"></iframe>
 
-            <p><b>Feature Engineering</b></p>
+            <h4>Feature Engineering</h4>
             <p>To enhance model accuracy, we engineered features and applied encoding techniques:</p>
 
-            <!-- Tab Navigation -->
-            <div class="tab">
-                <button class="tablinks active" onclick="openTab(event, 'encoding')">Encoding</button>
-                <button class="tablinks" onclick="openTab(event, 'feature-selection')">Feature Selection</button>
-            </div>
+                <!-- Tab Navigation -->
+                <div class="tab">
+                    <button class="tablinks active" onclick="openTab(event, 'encoding')">Encoding</button>
+                    <button class="tablinks" onclick="openTab(event, 'feature-selection')">Feature Selection</button>
+                </div>
 
-            <!-- Encoding Tab Content -->
-            <div id="encoding" class="tabcontent" style="display: block;">
-                <ul>
-                    <li><b>Ordinal Encoding:</b> Transformed <code>contract_type</code> into numerical values based on churn likelihood
-                        <ul>
-                            <li>Month-to-Month Contract (Most likely to churn)</li>
-                            <li>One-Year Contract</li>
-                            <li>Two-Year Contract (Least likely to churn)</li>                        
-                        </ul>
-                    </li>
-                
-                    <li><b>Binary Encoding:</b> Created <code>not_credit_card</code> column</li>
+                <!-- Encoding Tab Content -->
+                <div id="encoding" class="tabcontent" style="display: block;">
+                    <ul>
+                        <li><b>Ordinal Encoding:</b> Transformed <code>contract_type</code> into numerical values based on churn likelihood
+                            <ul>
+                                <li>Month-to-Month Contract (Most likely to churn)</li>
+                                <li>One-Year Contract</li>
+                                <li>Two-Year Contract (Least likely to churn)</li>                        
+                            </ul>
+                        </li>
                     
-                    <li><b>One-Hot Encoding:</b> Applied to <code>internet_type</code> to convert categorical values into separate binary columns</li>
-            </div>
-            
+                        <li><b>Binary Encoding:</b> Created <code>not_credit_card</code> column</li>
+                        <li><b>One-Hot Encoding:</b> Applied to <code>internet_type</code> to convert categorical values into separate binary columns</li>
+                </div>
+                
+                <!-- Feature Selection Tab Content -->
+                <div id="feature-selection" class="tabcontent">
+                    <ul>
+                        <li><b>Feature Aggregation:</b> Generated new features to capture customer engagement
+                            <ul>
+                                <li><code>stream_type_count</code>: Total number of streaming services used</li>
+                                <li><code>total_services</code>: Total number of services subscribed</li>
+                                <li><code>total_basic_services</code>: Count of basic services subscribed</li>
+                                <li><code>total_premium_services</code>: Count of premium add-ons</li>
+                            </ul>
+                        </li>
 
-            <!-- Feature Selection Tab Content -->
-            <div id="feature-selection" class="tabcontent">
-                <ul>
-                    <li><b>Feature Aggregation:</b> Generated new features to capture customer engagement:
-                        <ul>
-                            <li><code>stream_type_count</code>: Total number of streaming services used</li>
-                            <li><code>total_services</code>: Total number of services subscribed</li>
-                            <li><code>total_basic_services</code>: Count of basic services subscribed</li>
-                            <li><code>total_premium_services</code>: Count of premium add-ons</li>
-                        </ul>
-                    </li>
-
-                    <li><b>Churn Risk Indicator:</b> Created <code>is_top_churn_area</code></li>
-
-                    <li><b>Feature Selection & Correlation Pruning:</b> Iteratively removed highly correlated features (<b>correlation > 0.85</b>) to prevent multicollinearity
-                    </li>
+                        <li><b>Churn Risk Indicator:</b> Created <code>is_top_churn_area</code></li>
+                        <li><b>Feature Selection & Correlation Pruning:</b> Iteratively removed highly correlated features (<b>correlation > 0.85</b>) to prevent multicollinearity
+                        
+                        </li>
+                    </ul>
                 </div> 
 
-            <p><b>Model Selection & Training</b></p>
-            <p>
-                To ensure the best-performing model, multiple machine learning algorithms were tested and evaluated based on **ROC AUC (Receiver Operating Characteristic - Area Under the Curve)** scores.
-            </p>
+            <h4>Model Selection & Training</h4>
+            <p>To ensure the best-performing model, multiple machine learning algorithms were tested and
+                evaluated based on ROC AUC (Receiver Operating Characteristic - Area Under the Curve) scores.</p>
 
-            <!-- Tab Navigation -->
-            <div class="tab">
-                <button class="tablinks active" onclick="openTab(event, 'feature-refinement')">Feature Refinement</button>
-                <button class="tablinks" onclick="openTab(event, 'base-model')">Base Model Comparison</button>
-                <button class="tablinks" onclick="openTab(event, 'hyperparameter-tuning')">Hyperparameter Tuning</button>
-            </div>
+                <!-- Tab Navigation -->
+                <div class="tab">
+                    <button class="tablinks active" onclick="openTab(event, 'feature-refinement')">Feature Refinement</button>
+                    <button class="tablinks" onclick="openTab(event, 'base-model')">Base Model Comparison</button>
+                    <button class="tablinks" onclick="openTab(event, 'hyperparameter-tuning')">Hyperparameter Tuning</button>
+                </div>
 
-            <!-- Feature Refinement Tab -->
-            <div id="feature-refinement" class="tabcontent" style="display: block;">
-                <ul>
-                    <li>Before selecting a model, we utilised <b>SHAP (SHapley Additive exPlanations)</b> to assess 
-                    <b>feature importance</b> and remove redundant or weak predictors. Following this analysis, we experimented with various feature combinations and retained only the most impactful ones.</li>
-                    <li>The dataset was divided into <b>training (80%) and testing (20%) subsets</b> to evaluate model generalisability 
-                    and mitigate overfitting risks.</li>
-                </ul>
-            </div>
+                <!-- Feature Refinement Tab -->
+                <div id="feature-refinement" class="tabcontent" style="display: block;">
+                    <ul>
+                        <li>Before selecting a model, we utilised <b>SHAP (SHapley Additive exPlanations)</b> to assess 
+                        <b>feature importance</b> and remove redundant or weak predictors. Following this analysis, we experimented with various feature combinations and retained only the most impactful ones.</li>
+                        <li>The dataset was divided into <b>training (80%) and testing (20%) subsets</b> to evaluate model generalisability 
+                        and mitigate overfitting risks.</li>
+                    </ul>
+                </div>
 
-            <!-- Base Model Comparison Tab -->
-            <div id="base-model" class="tabcontent">
-                <p>
-                    Three models were evaluated using ROC AUC as the primary metric:
-                </p>
-                <ul>
-                    <li><b>Logistic Regression</b></li>
-                    <li><b>CatBoost</b></li>
-                    <li><b>Random Forest</b></li>
-                </ul>
-                <p>
-                    <b>Random Forest</b> achieved the highest AUC score and was chosen as the best-performing model. To ensure model consistency,
-                    we applied <b>K-Fold Cross-Validation (K=10)</b> across all three models. 
-                    <b>Random Forest</b> consistently outperformed the alternatives, confirming its suitability for deployment.
-                </p>
-            </div>
+                <!-- Base Model Comparison Tab -->
+                <div id="base-model" class="tabcontent">
+                    <ul><li>Three models were evaluated using ROC AUC as the primary metric
+                            <ul>
+                                <li><b>Logistic Regression</b></li>
+                                <li><b>CatBoost</b></li>
+                                <li><b>Random Forest</b></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>Random Forest</b> achieved the highest AUC score and was chosen as the best-performing model. To ensure model consistency,
+                            we applied <b>K-Fold Cross-Validation (K=10)</b> across all three models. 
+                            <b>Random Forest</b> consistently outperformed the alternatives, confirming its suitability for deployment.
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Hyperparameter Tuning Tab -->
-            <div id="hyperparameter-tuning" class="tabcontent">
-                <p>
-                    To optimise the Random Forest model, we employed <b>RandomisedSearchCV</b>, 
-                    incorporating Stratified K-Fold Cross-Validation to maintain balanced class distributions across folds.
-                </p>
-            </div>
+                <!-- Hyperparameter Tuning Tab -->
+                <div id="hyperparameter-tuning" class="tabcontent">
+                    <p>
+                        To optimise the Random Forest model, we employed <b>RandomisedSearchCV</b>, 
+                        incorporating Stratified K-Fold Cross-Validation to maintain balanced class distributions across folds.
+                    </p>
+                </div>
 
+            <!-- Call to Action -->
+            <section class="cta">
+                <form action="{{ url_for('get_html') }}" method="get">
+                    <button class="submit">Use Customer Churn Prediction Tool</button>
+                </form>
+            </section>
 
-            <p><b>Model Deployment</b></p>
+            <h4>Model Deployment</h4>
             <p>
                 The final model was deployed as a <b>Flask web application</b> on an <b>AWS EC2 instance</b>,
                 enabling users to submit customer data and receive real-time churn predictions.
@@ -189,12 +190,7 @@
 
         </section>
 
-        <!-- Call to Action -->
-        <section class="cta">
-            <form action="{{ url_for('get_html') }}" method="get">
-                <button class="submit">Use Customer Churn Prediction Tool</button>
-            </form>
-        </section>
+        
        
     </div>
 
