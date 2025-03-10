@@ -36,11 +36,10 @@ Rui Xin Oh
 - **Offline AUC Score:** **0.8472** *(on test dataset)*
 - **Feature Selection:** Used **SHAP (SHapley Additive exPlanations)** to refine input features
 
----
+--
 
-## 💻 Running the Project Locally
+## Visual Code Hierarchy
 
-### **Repo Hierarchy**
 ```bash
 JAN25-P01/   # Project Root
 │── data/
@@ -62,6 +61,10 @@ JAN25-P01/   # Project Root
 │── README.md
 │── Dockerfile  # Containerization setup
 ```
+
+---
+
+## 💻 Running the Project Locally
 
 ### **Clone the Repository**
 ```bash
