@@ -40,7 +40,8 @@ Rui Xin Oh
 
 ## 💻 Running the Project Locally
 
-### **VS Code Key File Hierarchy**
+### **Repo Hierarchy**
+```bash
 JAN25-P01/   # Project Root
 │── data/
 │   ├── cust-churn-data.ipynb  # Jupyter Notebook for EDA & Feature Engineering
@@ -60,6 +61,7 @@ JAN25-P01/   # Project Root
 │── requirements.txt  # Dependencies for the project
 │── README.md
 │── Dockerfile  # Containerization setup
+```
 
 ### **Clone the Repository**
 ```bash
