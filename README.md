@@ -38,7 +38,7 @@ Rui Xin Oh
 
 ---
 
-## Visual Code Hierarchy
+## Visual Studio Code Hierarchy
 
 ```bash
 JAN25-P01/   # Project Root
