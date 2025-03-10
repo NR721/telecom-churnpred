@@ -18,7 +18,7 @@ Rui Xin Oh
 ---
 
 ## Live Web Application
-**URL:** [Deployed Flask App](https://your-deployed-url.com)  
+**URL:** [Deployed Flask App](http://ec2-18-116-49-118.us-east-2.compute.amazonaws.com/)  
 *(Click the link above to access the live web application)*
 
 ---
@@ -46,9 +46,21 @@ git clone https://github.com/Heicoders-AI300/jan25-p01.git
 cd trusttelecom-churn-prediction
 ```
 
+## Prerequisites
+Before installing Python dependencies, install system dependencies:
+
+```bash
+# For macOS (Homebrew)
+brew install cmake ninja llvm
+brew install python@3.10
+
+# For Ubuntu/Debian
+sudo apt update && sudo apt install cmake ninja-build llvm
+```
+
 ### **Set Up a Virtual Environment**
 ```bash
-python3 -m venv venv
+python3.10 -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 ```
 

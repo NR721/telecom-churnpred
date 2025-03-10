@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify, send_file
 import joblib
-from input_processing import format_model_inputs, validate
+from .input_processing import format_model_inputs, validate
 
 app = Flask(__name__)
 
