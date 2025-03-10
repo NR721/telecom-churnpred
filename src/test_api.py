@@ -1,7 +1,7 @@
 import requests
 
 # Define API URL
-website = 'http://localhost:5000'  
+website = 'http://localhost:5000' 
 url = f'{website}/api_json'
 
 # Input data

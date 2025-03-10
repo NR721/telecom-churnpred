@@ -3,18 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to TrustTelecom Churn Prediction</title>
+    <title>TrustTelecom | Customer Churn Prediction</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>    
 <body>
-    <header>
-        <h1>Welcome to TrustTelecom</h1>
-        <p>Use our predictive tool to analyze customer churn and improve retention strategies.</p>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>TrustTelecom Churn Prediction</h1>
+        <p>Every month, <b>thousands of customers leave</b> service providers;
+            acquiring new customers is <b>5 times more expensive</b> than retaining existing ones. 
+            As such, our data engineering team created a churn prediction tool (trained on a dataset of 7043 customers based in California),
+            empowering the team to identify high-risk customers, provide targeted offers and discounts, and improve overall customer satisfaction.</p>
     </header>
+
+    <!-- Sticky CTA Button -->
+    <a href="{{ url_for('get_html') }}" class="sticky-cta">Use Churn Tool</a>
+
+    <!-- Right Section: Visualization -->
+    <section class="visualization">
+        <h2>Churn Trends Across California</h2>
+        <p><i>Annotated Top 10 churn areas with a red flag</i></p>
+        <iframe src="{{ url_for('static', filename='geo_churn_top10_areaid.html') }}" 
+                width="100%" height="400px" style="border: none;"></iframe>
+    </section>
+
+    <!-- Methodology Content -->
     <div class="container">
-    <form action="{{ url_for('get_html') }}" method="get">
-        <input type="submit" value="Go to Churn Prediction">
-    </form>
+        <!-- Left Section: About the Tool -->
+        <section class="info-section">
+            <h2>Methodology</h2>
+            <p><b>Data Collection & Cleaning</b></p>
+            <p>The dataset used in this model consists of 7,043 customer records from California, containing customer demographics, account details, billing history, and service subscriptions.
+                Before training the model, the dataset was cleaned and preprocessed, which included handling missing values, encoding categorical variables, and normalizing numerical fields.
+            </p>
+
+            <p><b>Feature Engineering</b></p>
+            <p>
+                The dataset included both numerical and categorical features. To improve model accuracy, we performed:
+                <ul>
+                    <li><b>One-hot encoding</b> for categorical variables (e.g., contract type).</li>
+                    <li><b>Normalization</b> for numerical features (e.g., total charges per quarter).</li>
+                    <li><b>Feature selection</b> to identify key drivers of churn.</li>
+                </ul>
+            </p>
+
+            <p><b>Model Selection & Training</b></p>
+            <p>
+                Several machine learning models were evaluated, including:
+                <ul>
+                    <li>Logistic Regression</li>
+                    <li>Random Forest</li>
+                    <li>XGBoost</li>
+                </ul>
+                The models were assessed using the <b>AUC (Area Under Curve)</b> metric.
+                The <b>Random Forest Classifier</b> achieved the highest AUC score and was selected for deployment.
+            </p>
+
+            <p><b>Model Deployment</b></p>
+            <p>
+                The final model was deployed using a <b>Flask API</b>, allowing users to submit customer data 
+                and receive real-time churn predictions. The API was containerized using <b>Docker</b> for scalability.
+                This tool enables TrustTelecom’s <b>Customer Care Team</b> to proactively engage with high-risk customers
+                and reduce churn.
+            </p>      
+
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta">
+            <form action="{{ url_for('get_html') }}" method="get">
+                <button class="submit">Use Customer Churn Prediction Tool</button>
+            </form>
+        </section>
+       
     </div>
+
 </body>
 </html>

@@ -7,10 +7,34 @@ body {
     color: #2c3e50;  /* Deep blue-gray for readability */
 }
 
+
+/* Hero Section */
+.hero {
+    text-align: left;
+    font-size: 1.1em;
+    padding: 40px 20px;
+    color: #2c3e50;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+
+}
+
+.hero h2 {
+    text-align: left;
+}
+
+.hero p {
+    font-size: 1em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 /* Header Styling */
 header {
     text-align: left;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto 20px; /* Centers but aligns text to the left */
     padding: 10px;
 }
@@ -22,6 +46,21 @@ header h1 {
     margin-bottom: 5px;
 }
 
+h2 {
+    text-align: left;
+    color: #117a8b;
+}
+
+h3 {
+    text-align: center;
+    color: #117a8b;
+}
+
+p {
+    text-align: left;
+    font-size: 1em;
+}
+
 /* Subheading (Normal Text, Left-Aligned) */
 header p {
     text-align: left;
@@ -29,6 +68,26 @@ header p {
     font-weight: normal; /* Ensures it's not bold */
     color: #2c3e50;
     margin-top: 0;
+}
+
+
+/* Sections */
+.info-section, .visualization, .cta {
+    margin-bottom: 30px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 20px; /* Centers but aligns text to the left */
+    /* padding: 10px; */
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Container */
@@ -103,7 +162,7 @@ select {
 
 /* Consistent Button Styling */
 input[type="submit"], button {
-    background-color: #2f9aad; /* Coral */
+    background-color: #2f9aad;
     color: white;
     border: none;
     cursor: pointer;
@@ -117,7 +176,7 @@ input[type="submit"], button {
 
 /* Hover Effect */
 input[type="submit"]:hover, button:hover {
-    background-color: #1b6876; /* Darker coral */
+    background-color: #1b6876; 
 }
 
 /* Small Text Descriptions */
@@ -140,18 +199,6 @@ small.error-message {
     margin-top: 5px;
 }
 
-/* Prediction Result */
-h2 {
-    text-align: center;
-    color: #117a8b;
-}
-
-p {
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     form {
@@ -163,3 +210,20 @@ p {
         font-size: 1em; /* Slightly smaller for better mobile experience */
     }
 }
+
+.sticky-cta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2f9aad; 
+    color: white;
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-cta:hover {
+    background-color: #1b6876; 
+}
+

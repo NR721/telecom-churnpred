@@ -80,8 +80,8 @@
         </form>
     
         {% if prediction is defined %}
-            <h2>Prediction Result:</h2>
-            <p>{{ prediction }}</p>
+            <h3>Prediction Result:</h3>
+            <h3>{{ prediction }}</h3>
         {% endif %}
 
         <script src="{{ url_for('static', filename='scripts/validation.js') }}"></script>
