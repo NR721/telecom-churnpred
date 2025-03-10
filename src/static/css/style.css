@@ -72,7 +72,7 @@ header p {
 
 
 /* Sections */
-.info-section, .visualization, .cta {
+.info-section, .cta {
     margin-bottom: 30px;
     text-align: left;
     max-width: 800px;
@@ -162,7 +162,7 @@ select {
 
 /* Consistent Button Styling */
 input[type="submit"], button {
-    background-color: #2f9aad;
+    background-color: #ef6b3a;
     color: white;
     border: none;
     cursor: pointer;
@@ -176,7 +176,7 @@ input[type="submit"], button {
 
 /* Hover Effect */
 input[type="submit"]:hover, button:hover {
-    background-color: #1b6876; 
+    background-color: #e63d00; 
 }
 
 /* Small Text Descriptions */
@@ -215,7 +215,7 @@ small.error-message {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #2f9aad; 
+    background-color: #ef6b3a; 
     color: white;
     padding: 12px 20px;
     font-size: 1em;
@@ -224,6 +224,39 @@ small.error-message {
 }
 
 .sticky-cta:hover {
-    background-color: #1b6876; 
+    background-color: #e63d00; 
+}
+
+/* Tab Navigation */
+.tab {
+    display: flex;
+    background-color: #e0e0e0;
+}
+
+.tab button {
+    background-color: #e0e0e0;
+    font-size: 1em;
+    font-weight: normal;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #ccc;
+}
+
+.tab button.active {
+    background-color: #117a8b;
+    color: white;
+}
+
+/* Tab Content */
+.tabcontent {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    margin-top: 5px;
 }
 
