@@ -42,7 +42,7 @@ Rui Xin Oh
 
 ### **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/trusttelecom-churn-prediction.git
+git clone https://github.com/Heicoders-AI300/jan25-p01.git
 cd trusttelecom-churn-prediction
 ```
 
@@ -61,7 +61,7 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
-Your app should now be running at **http://127.0.0.1:5000/**.
+Your app should now be running at **http://localhost:5000/**.
 
 ---
 
@@ -71,8 +71,6 @@ Your app should now be running at **http://127.0.0.1:5000/**.
 | `POST` | `/api_json`      | Get churn prediction via API |
 | `GET`  | `/cust_churn_pred` | Render the customer prediction form |
 | `GET`  | `/file`          | Download model file |
-
-*(Modify this table based on your API structure.)*
 
 ---
 
@@ -88,10 +86,3 @@ docker build -t trusttelecom-churn .
 ```bash
 docker run -d -p 80:80 trusttelecom-churn
 ```
-Visit `http://localhost` to access the app.
----
-
-## Contributing
-Feel free to submit a **Pull Request** or open an **Issue** if you find bugs or want to suggest improvements.
-
----
