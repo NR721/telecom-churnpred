@@ -124,3 +124,54 @@ docker build -t rxoh/trusttelecom-churn-app:1.1  .
 ```bash
 docker run -d -p 80:80 rxoh/trusttelecom-churn-app:1.1  .
 ```
+
+
+
+## AI300 Capstone Grading
+
+### Feedback from Instructor Team
+
+Hi Ruixin,
+
+Your overall work—including UI/UX, user flow, extra features like the progress bar, and a well-organized README (thanks for the folder structure haha)—is amazing!
+
+- Great job validating input fields in the form! Small details like this enhance user experience.
+
+- When clicking the predict button, the page refreshes and jumps to the top. Using a modal to display results with navigation buttons (e.g., ""Try Again"" or ""Go Home"") would improve usability.
+
+- Instead of hardcoding values like website = 'http://localhost:5000', consider storing them in a .env file. For larger projects with multiple endpoints, managing configurations in one place makes maintenance much easier.
+
+- Each model has different preprocessing needs. For example, Logistic Regression may require feature scaling and one-hot encoding, while Catboost handles categorical variables internally and doesn’t need scaling. If you switch from Logistic Regression to Catboost, removing unnecessary preprocessing steps can improve efficiency.
+
+- CatBoost handles missing values internally, so dropping rows may result in unnecessary data loss. It's better to let the model process them when possible.
+
+- No need to manually apply one-hot encoding for CatBoost—it natively supports categorical features, making preprocessing more efficient.
+
+Excellent work across the board! You’ve demonstrated strong skills in data preprocessing, model selection, and Flask deployment. Your documentation is thorough, and your Git practices are solid. Fantastic job—congrats on completing the AI300 course! 🚀
+
+
+### Total Score: 20 / 20
+
+Data Exploration: 6 / 6 marks
+- [x] SQL used to successfully retrieve dataset from remote Heicoders database
+- [x] SQL query should retrieve at least one column from each table:
+churn_status, account, account_usage, customer and city tables
+- [x] At least 2 charts used to visualise columns in dataset (e.g. with matplotlib or plotly)
+- [x] Evidence of data preprocessing and/or feature engineering
+e.g. column data type conversions, handling missing values, one hot encoding, etc.
+
+Model Selection: 5 / 5 marks
+- [x] Experiment with at least 2 model algorithms (e.g. catboost, xgboost, lgbm)
+- [x] Evidence of hyperparameter tuning (e.g. GridSearchCV, RandomizedSearchCV, etc)
+- [x] Calculate offline AUC of selected model
+- [x] Export selected final model to .pkl file using joblib library
+
+Remote GitHub Repository: 4 / 4 marks
+- [x] Evidence of multiple commits with meaningful commit messages
+- [x] Contains latest code for research notebook & Flask web app
+- [x] Contains required documentation specified in grading rubric
+
+Flask Web Application: 5 / 5 marks
+- [x] Implement Model() class that loads model from .pkl file and generate predictions
+- [x] Web app should support functionality of generating binary predictions
+- [x] Web app is hosted on a publicly accessible website
