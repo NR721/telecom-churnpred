@@ -17,9 +17,9 @@ Rui Xin Oh
 
 ---
 
-## Live Web Application
-**URL:** [Deployed Flask App](http://ec2-18-116-49-118.us-east-2.compute.amazonaws.com/)  
-*(Click the link above to access the live web application)*
+## Live Web Application (Instance Terminated)
+**Demo Recording:** https://drive.google.com/file/d/1Gdskxt4ddbn_8LfSQvx2M50s666Y9zWp/view?usp=sharing
+**URL (Terminated):** [Deployed Flask App](http://ec2-18-116-49-118.us-east-2.compute.amazonaws.com/)  
 
 ---
 
